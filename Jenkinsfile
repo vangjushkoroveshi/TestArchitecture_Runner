@@ -3,7 +3,7 @@ pipeline{
 	stages{
 		stage("Start Grid"){
 			steps{
-				sh "docker-compose -f docker-compose.yml up -d hub chrome firefox"
+				sh "docker-compose -f docker-compose.yaml up -d hub chrome firefox"
 			}
 		}
 		stage("Run Test"){
