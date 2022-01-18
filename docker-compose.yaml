@@ -16,7 +16,7 @@ services:
     environment:
       - HUB_HOST=hub
   ui-module:
-    image: vangjush/testarchitecture
+    image: vangjushk/testarchitecture
     depends_on:
       - chrome
       - firefox
@@ -27,7 +27,7 @@ services:
     volumes:
       - ./output/ui-result:/usr/share/testarchitectureDocker/test-output
   api-module:
-    image: vangjush/testarchitecture
+    image: vangjushk/testarchitecture
     depends_on:
       - chrome
       - firefox
@@ -38,7 +38,7 @@ services:
     volumes:
       - ./output/api-result:/usr/share/testarchitectureDocker/test-output
   db-module:
-    image: vangjush/testarchitecture
+    image: vangjushk/testarchitecture
     depends_on:
       - chrome
       - firefox
