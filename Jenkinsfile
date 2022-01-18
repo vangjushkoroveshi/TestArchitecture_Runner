@@ -3,7 +3,7 @@ pipeline{
 	stages{
 		stage("Start Grid"){
 			steps{
-				sh "docker-compose up -d hub chrome firefox"
+				sh "docker-compose -f docker-compose.yml up -d hub chrome firefox"
 			}
 		}
 		stage("Run Test"){
@@ -15,7 +15,7 @@ pipeline{
 	post{
 		always{
 			archiveArtifacts artifacts: 'output/**'
-			sh "docker-compose down"
+			sh "docker-compose -f docker-compose.yml down"
 		}
 	}
 }
