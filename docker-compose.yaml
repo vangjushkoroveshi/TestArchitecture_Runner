@@ -1,0 +1,50 @@
+version: "3"
+services:
+  hub:
+    image: selenium/hub:latest
+  chrome:
+    image: selenium/node-chrome:latest
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+  firefox:
+    image: selenium/node-firefox:latest
+    shm_size: '512mb'
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+  ui-module:
+    image: vangjush/testarchitecture
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=hub
+      - MODULE=ui-module.xml
+    volumes:
+      - ./output/ui-result:/usr/share/testarchitectureDocker/test-output
+  api-module:
+    image: vangjush/testarchitecture
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=hub
+      - MODULE=api-module.xml
+    volumes:
+      - ./output/api-result:/usr/share/testarchitectureDocker/test-output
+  db-module:
+    image: vangjush/testarchitecture
+    depends_on:
+      - chrome
+      - firefox
+    environment:
+      - BROWSER=chrome
+      - HUB_HOST=hub
+      - MODULE=db-module.xml
+    volumes:
+      - ./output/db-result:/usr/share/testarchitectureDocker/test-output
