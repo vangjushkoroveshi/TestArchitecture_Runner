@@ -1,5 +1,14 @@
 version: "3.2"
 services:
+
+  selenium-hub:
+    image: selenium/hub:4.3.0-20220628
+    container_name: selenium-hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+
   chrome:
     image: selenium/node-chrome:4.3.0-20220628
     shm_size: 2gb
@@ -11,22 +20,14 @@ services:
       - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
 
   firefox:
-    image: selenium/node-firefox:4.3.0-20220628
-    shm_size: 2gb
-    depends_on:
-      - selenium-hub
-    environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
-
-  selenium-hub:
-    image: selenium/hub:4.3.0-20220628
-    container_name: selenium-hub
-    ports:
-      - "4442:4442"
-      - "4443:4443"
-      - "4444:4444"
+      image: selenium/node-firefox:4.3.0-20220628
+      shm_size: 2gb
+      depends_on:
+        - selenium-hub
+      environment:
+        - SE_EVENT_BUS_HOST=selenium-hub
+        - SE_EVENT_BUS_PUBLISH_PORT=4442
+        - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
 
   ui-module:
     image: vangjushk/testarchitecture
@@ -39,6 +40,7 @@ services:
       - MODULE=ui-module.xml
     volumes:
       - ./output/ui-result:/usr/share/testarchitectureDocker/test-output
+
   api-module:
     image: vangjushk/testarchitecture
     depends_on:
@@ -50,6 +52,7 @@ services:
       - MODULE=api-module.xml
     volumes:
       - ./output/api-result:/usr/share/testarchitectureDocker/test-output
+
   db-module:
     image: vangjushk/testarchitecture
     depends_on:
