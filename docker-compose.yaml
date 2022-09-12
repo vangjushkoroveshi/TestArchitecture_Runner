@@ -29,7 +29,7 @@ services:
       - "4444:4444"
 
   ui-module:
-    image: vangjushk/testarchitecture
+    image: adela/testarchitecture
     depends_on:
       - chrome
       - firefox
@@ -39,8 +39,9 @@ services:
       - MODULE=ui-module.xml
     volumes:
       - ./output/ui-result:/usr/share/testarchitectureDocker/test-output
+      -
   api-module:
-    image: vangjushk/testarchitecture
+    image: adela/testarchitecture
     depends_on:
       - chrome
       - firefox
@@ -51,7 +52,7 @@ services:
     volumes:
       - ./output/api-result:/usr/share/testarchitectureDocker/test-output
   db-module:
-    image: vangjushk/testarchitecture
+    image: adela/testarchitecture
     depends_on:
       - chrome
       - firefox
