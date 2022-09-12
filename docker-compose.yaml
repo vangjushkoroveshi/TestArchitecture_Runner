@@ -39,7 +39,6 @@ services:
       - MODULE=ui-module.xml
     volumes:
       - ./output/ui-result:/usr/share/testarchitectureDocker/test-output
-      -
   api-module:
     image: vangjushk/testarchitecture
     depends_on:
