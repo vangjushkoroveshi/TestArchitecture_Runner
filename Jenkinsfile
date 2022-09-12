@@ -3,7 +3,7 @@ pipeline{
 	stages{
 		stage("Start Grid"){
 			steps{
-				bat "docker-compose -f docker-compose.yaml up -d selenium-hub firefox --scale chrome=4"
+				bat "docker-compose -f docker-compose.yaml up -d selenium-hub firefox chrome"
 			}
 		}
 		stage("Run Test"){
