@@ -10,7 +10,7 @@ services:
       - "4444:4444"
 
   chrome:
-    image: selenium/node-chrome:105.0
+    image: selenium/node-chrome:latest
     shm_size: 2gb
     depends_on:
       - selenium-hub
