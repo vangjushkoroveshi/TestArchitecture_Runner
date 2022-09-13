@@ -10,7 +10,7 @@ services:
       - "4444:4444"
 
   chrome:
-    image: selenium/node-chrome:4.3.0-20220628
+    image: selenium/node-chrome:105.0
     shm_size: 2gb
     depends_on:
       - selenium-hub
@@ -21,7 +21,7 @@ services:
     deploy:
         replicas: 4
   firefox:
-      image: selenium/node-firefox:4.3.0-20220628
+      image: selenium/node-firefox:latest
       shm_size: 2gb
       depends_on:
         - selenium-hub
