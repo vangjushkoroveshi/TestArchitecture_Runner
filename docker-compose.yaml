@@ -31,7 +31,7 @@ services:
         - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
 
   ui-module:
-    image: vangjushk/testarchitecture
+    image: adelaceri/testarchitecture
     depends_on:
       - chrome
       - firefox
@@ -43,7 +43,7 @@ services:
       - ./output/ui-result:/usr/share/testarchitectureDocker/test-output
 
   api-module:
-    image: vangjushk/testarchitecture
+    image: adelaceri/testarchitecture
     depends_on:
       - chrome
       - firefox
@@ -55,7 +55,7 @@ services:
       - ./output/api-result:/usr/share/testarchitectureDocker/test-output
 
   db-module:
-    image: vangjushk/testarchitecture
+    image: adelaceri/testarchitecture
     depends_on:
       - chrome
       - firefox
